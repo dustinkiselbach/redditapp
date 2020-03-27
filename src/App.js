@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import Navbar from './components/layout/Navbar'
 import Search from './components/posts/Search'
@@ -16,13 +16,13 @@ function App () {
   //   setLoading
   // })
 
-  const getUsers = async subreddit => {
+  const getUsers = async (subreddit, number) => {
     setLoading(true)
     let redditResponse
 
     try {
       redditResponse = await fetch(
-        `https://www.reddit.com/r/${subreddit}/hot/.json?limit=50`
+        `https://www.reddit.com/r/${subreddit}/hot/.json?limit=${number}`
       )
     } catch (err) {
       console.log(err)

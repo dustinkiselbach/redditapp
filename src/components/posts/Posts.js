@@ -3,7 +3,7 @@ import PostItem from './PostItem'
 import Spinner from '../layout/Spinner'
 
 const Posts = props => {
-  console.log(props)
+  //   console.log(props)
   if (props.loading) {
     return <Spinner />
   } else {

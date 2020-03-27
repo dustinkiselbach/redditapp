@@ -7,7 +7,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   color: aliceblue;
-  background-color: black;
+  background-color: #1d1c1c;
   line-height: 1.5;
 }
 
@@ -42,16 +42,11 @@ body {
   font-size: 1rem;
   margin: 5px 0px 5px 0;
   color: white;
+  border-radius: 2%;
 }
 
 .btn:hover {
   opacity: 75%;
-}
-
-.pic-area {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 0 10px 0;
 }
 
 .content-area {
@@ -73,6 +68,36 @@ a {
   color: aliceblue;
 }
 
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper::after {
+  content: '▼';
+  font-size: 1rem;
+  top: 6px;
+  right: 10px;
+  position: absolute;
+  color: black;
+}
+
+select {
+  display: block;
+  font-family: inherit;
+  font-size: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px;
+  height: 30px;
+}
+
 .content-area small {
   display: block;
 }
@@ -80,8 +105,9 @@ a {
 .post-detail {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  margin: 20px 0px;
 }
 
 .post-detail img {
@@ -90,4 +116,19 @@ a {
   border: white 1px solid;
   border-radius: 1%;
   margin: 10px 0px 10px 0px;
+  align-self: center;
+}
+
+.story-area {
+  margin-top: 20px;
+}
+
+.story-area p {
+  margin: 20px 0px;
+}
+
+.gif-area {
+  display: grid;
+  width: 100%;
+  height: 75vh;
 }

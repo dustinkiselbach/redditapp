@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Spinner from '../layout/Spinner'
 
 const Post = props => {
@@ -9,9 +10,9 @@ const Post = props => {
       props.match.params.title
     )
   }, [])
-  console.log(props.loading)
   if (props.post[0] !== undefined) {
-    console.log(props.post[0].data.children[0].data.url.slice(8, 10))
+    // console.log(props.post[0].data.children[0].data.url.slice(8, 10))
+    // console.log(props.post[0].data.children[0].data)
   }
   //   useEffect(() => {
   //     async function fetchData() {
@@ -27,8 +28,12 @@ const Post = props => {
   } else if (props.post[0] !== undefined) {
     return (
       <div className='post-detail'>
-        <h1>{props.post[0].data.children[0].data.subreddit}</h1>
+        <h1>r/{props.post[0].data.children[0].data.subreddit}</h1>
         <h2>{props.post[0].data.children[0].data.title}</h2>
+        <h3>u/{props.post[0].data.children[0].data.author}</h3>
+        <Link to='/'>
+          <input type='submit' value='Back to Search' className='btn' />
+        </Link>
         {(() => {
           switch (props.post[0].data.children[0].data.url.slice(8, 10)) {
             case 'i.':
@@ -69,6 +74,8 @@ const Post = props => {
                   ))}
                 </div>
               )
+            default:
+              return <div></div>
           }
         })()}
       </div>

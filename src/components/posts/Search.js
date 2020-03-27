@@ -2,14 +2,17 @@ import React, { useState } from 'react'
 
 const Search = props => {
   const [text, setText] = useState('')
+  const [menu, setMenu] = useState('')
 
   const onSubmit = e => {
     e.preventDefault()
-    props.getUsers(text)
+    props.getUsers(text, menu)
     setText('')
+    setMenu('')
   }
 
   const onChange = e => setText(e.target.value)
+  const onMenuChange = e => setMenu(e.target.value)
 
   return (
     <div>
@@ -22,6 +25,15 @@ const Search = props => {
           value={text}
           onChange={onChange}
         />
+        <div className='select-wrapper'>
+          <select id='dropdown' onChange={onMenuChange}>
+            <option value='N/A'>Number of Posts</option>
+            <option value='10'>10</option>
+            <option value='25'>25</option>
+            <option value='50'>50</option>
+            <option value='100'>100</option>
+          </select>
+        </div>
         <input type='submit' value='Search' className='btn' />
       </form>
     </div>
