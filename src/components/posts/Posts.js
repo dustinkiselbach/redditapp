@@ -8,9 +8,9 @@ const Posts = props => {
     return <Spinner />
   } else {
     return (
-      <div>
+      <div className='all-posts'>
         {props.reddit.map(post => (
-          <PostItem key={post.data.id} post={post} />
+          <PostItem key={post.data.id} post={post} className='post-item' />
         ))}
       </div>
     )

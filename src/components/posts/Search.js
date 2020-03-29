@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Clear from './Clear'
 
 const Search = props => {
   const [text, setText] = useState('')
@@ -34,7 +35,10 @@ const Search = props => {
             <option value='100'>100</option>
           </select>
         </div>
-        <input type='submit' value='Search' className='btn' />
+        <div className='search-btn'>
+          <input type='submit' value='Search' className='btn' />
+          <Clear clearUsers={props.clearUsers} />
+        </div>
       </form>
     </div>
   )

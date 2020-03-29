@@ -4,6 +4,7 @@ import Navbar from './components/layout/Navbar'
 import Search from './components/posts/Search'
 import Posts from './components/posts/Posts'
 import Post from './components/posts/Post'
+// import Footer from './components/layout/Footer'
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
@@ -17,21 +18,25 @@ function App () {
   // })
 
   const getUsers = async (subreddit, number) => {
-    setLoading(true)
-    let redditResponse
+    if (subreddit) {
+      setLoading(true)
+      let redditResponse
 
-    try {
-      redditResponse = await fetch(
-        `https://www.reddit.com/r/${subreddit}/hot/.json?limit=${number}`
-      )
-    } catch (err) {
-      console.log(err)
+      try {
+        redditResponse = await fetch(
+          `https://www.reddit.com/r/${subreddit}/hot/.json?limit=${number}`
+        )
+      } catch (err) {
+        console.log(err)
+      }
+      let redditObj = await redditResponse.json()
+      setLoading(false)
+
+      //   return redditObj.data.children[5].data.url
+      setReddit(redditObj.data.children)
+    } else {
+      console.log('fart')
     }
-    let redditObj = await redditResponse.json()
-    setLoading(false)
-
-    //   return redditObj.data.children[5].data.url
-    setReddit(redditObj.data.children)
   }
 
   const getPost = async (subreddit, id, title) => {
@@ -51,6 +56,10 @@ function App () {
     setPost(postObj)
   }
 
+  const clearUsers = () => {
+    setReddit([])
+  }
+
   return (
     <div>
       <Router>
@@ -58,7 +67,7 @@ function App () {
         <div className='container'>
           <Switch>
             <Route exact path='/'>
-              <Search getUsers={getUsers} />
+              <Search getUsers={getUsers} clearUsers={clearUsers} />
               <Posts reddit={reddit} loading={loading} />
             </Route>
             <Route

@@ -12,7 +12,7 @@ const Post = props => {
   }, [])
   if (props.post[0] !== undefined) {
     // console.log(props.post[0].data.children[0].data.url.slice(8, 10))
-    // console.log(props.post[0].data.children[0].data)
+    console.log(props.post[0].data.children[0].data)
   }
   //   useEffect(() => {
   //     async function fetchData() {
@@ -28,11 +28,15 @@ const Post = props => {
   } else if (props.post[0] !== undefined) {
     return (
       <div className='post-detail'>
-        <h1>r/{props.post[0].data.children[0].data.subreddit}</h1>
-        <h2>{props.post[0].data.children[0].data.title}</h2>
-        <h3>u/{props.post[0].data.children[0].data.author}</h3>
+        <h1 className='item-1'>
+          r/{props.post[0].data.children[0].data.subreddit}
+        </h1>
+        <h2 className='item-2'>{props.post[0].data.children[0].data.title}</h2>
+        <h3 className='item-3'>
+          u/{props.post[0].data.children[0].data.author}
+        </h3>
         <Link to='/'>
-          <input type='submit' value='Back to Search' className='btn' />
+          <input type='submit' value='Back to Search' className='btn item-4' />
         </Link>
         {(() => {
           switch (props.post[0].data.children[0].data.url.slice(8, 10)) {
